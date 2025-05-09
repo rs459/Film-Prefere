@@ -5,7 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Se connecter ou s'inscrire</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="main.js" async></script>
+    <script src="assets/js/main.js" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:400&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="message-box-container"></div>
+    <header>
+      <h1 class="libre-baskerville-regular">Mon film préféré</h1>
+    </header>
+    <main class="index">
+      <form id="register-form">
+        <h2 class="libre-baskerville-regular">S'inscrire</h2>
+        <p>
+          <label for="register-mail">Email :</label>
+          <input
+            id="register-mail"
+            name="register-mail"
+            type="email"
+            required
+          />
+        </p>
+        <p>
+          <label for="passwd1">Mot de passe :</label>
+          <input type="text" id="passwd1" name="passwd1" />
+        </p>
+        <p>
+          <label for="passwd2">Confirmez mot de passe :</label>
+          <input type="text" id="passwd2" name="passwd2" />
+        </p>
+        <button>S'enregistrer</button>
+      </form>
+
+      <form id="login-form">
+        <h2 class="libre-baskerville-regular">Se Connecter</h2>
+        <p>
+          <label for="email">Email :</label>
+          <input type="email" name="email" id="email" />
+        </p>
+        <p>
+          <label for="passwd">Mot de passe :</label
+          ><input type="text" name="passwd" id="passwd" required />
+        </p>
+        <button>Se connecter</button>
+      </form>
+    </main>
+  </body>
 </html>

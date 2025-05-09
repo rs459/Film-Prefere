@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Ligne Verte</title>
+    <script>
+      // parse immediately, block rendering, redirect if not auth
+      if (
+        !localStorage.getItem("Auth") &&
+        !localStorage.getItem("Auth") === true
+      ) {
+        window.location.href = "/";
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="/assets/js/main.js" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="film">
+    <button type="button" class="disconnect-btn">Se Déconnecter</button>
+    <main>
+      <header>
+        <h1>LA LIGNE VERTE</h1>
+      </header>
+      <section class="synopsis">
+        <h2>Synopsis</h2>
+        <div>
+          <img
+            src="assets/img/Jacquette.webp"
+            width="400"
+            heigth="600"
+            alt="jacquette"
+          />
+          <p>
+            « Paul Edgecomb, pensionnaire centenaire d'une maison de retraite,
+            est hanté par ses souvenirs. Gardien-chef du pénitencier de Cold
+            Mountain, en 1935, en Louisiane, il était chargé de veiller au bon
+            déroulement des exécutions capitales au bloc E (la ligne verte) en
+            s'efforçant d'adoucir les derniers moments des condamnés. Parmi eux
+            se trouvait un colosse du nom de John Coffey, accusé du viol et du
+            meurtre de deux fillettes. »
+          </p>
+        </div>
+      </section>
+      <section class="video">
+        <h2>Trailer</h2>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/mccs8Ql8m8o?si=lrteJkQOXf_Oh2Se"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </section>
+      <section class="distribution">
+        <h2>Distribution</h2>
+        <ul>
+          <li>
+            <figure>
+              <img src="/assets/img/MichaelClarkeDuncan.jpg" alt="" />
+              <figcaption>Michael Clarke Duncan</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/TomHanks.jpg" alt="" />
+              <figcaption>Tom Hanks</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/DavidMorse.jpg" alt="" />
+              <figcaption>David Morse</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/SamRockweel.jpg" alt="" />
+              <figcaption>Sam Rockweel</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/DougHutchinson.jpg" alt="" />
+              <figcaption>Doug Hutchinson</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/MichaelJeter.jpg" alt="" />
+              <figcaption>Michael Jeter</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/JamesCromwell.jpg" alt="" />
+              <figcaption>James Cromwell</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/img/BarryPepper.jpg" alt="" />
+              <figcaption>Barry Pepper</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+      <section class="avis">
+        <h2>Mon avis</h2>
+        <p>
+          Ce film contient beaucoup de messages cachés, le bien qui est
+          considéré comme le mal, le mal considéré comme le bien, le mal qui
+          fini anéanti par le mal. Ce film dénonce les à priori, et suscite
+          beaucoup d'empathie, la touche de magie du film adouci le sort des
+          destins brisés. Au milieu de cet univers carcéral, reigne une
+          humanité, une droiture, un éthique représentée par les gardiens. On se
+          prend au jeu, de se demander si nous aurions pu appliquer la peine de
+          mort à un être aussi particulier, qu'aurions-nous pris comme décision
+          à leur place.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
