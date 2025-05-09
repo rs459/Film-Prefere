@@ -4,7 +4,10 @@ const registerForm = document.querySelector("#register-form");
 
 const disconnectBtn = document.querySelector(".disconnect-btn");
 
-function ShowMessage({ text, type }) {
+function showMessage({ text, type }) {
+  if (document.querySelector("#message-box")) {
+    document.querySelector("#message-box").remove();
+  }
   const div = document.createElement("div");
   div.id = "message-box";
   const p = document.createElement("p");
@@ -34,7 +37,7 @@ if (loginForm) {
     const passwd = loginFormPasswd.value;
 
     if (!checkAuth({ mail, passwd })) {
-      ShowMessage({
+      showMessage({
         text: "Vous n'avez pas rentré un nom d'utilisateur correct et/ou le bon mot de passe",
         type: "error",
       });
@@ -45,10 +48,15 @@ if (loginForm) {
   });
 
   function checkAuth({ mail, passwd }) {
-    const LsMail = localStorage.getItem("mail");
-    const LsPasswd = localStorage.getItem("passwd");
+    const users = JSON.parse(localStorage.getItem("Users"));
+    const user = users.find(
+      (user) => user.mail === mail && user.passwd === passwd
+    );
+    if (!user) {
+      return false;
+    }
 
-    return mail === LsMail && passwd === LsPasswd ? true : false;
+    return true;
   }
 
   function Auth() {
@@ -63,15 +71,16 @@ if (registerForm) {
 
   registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    /* naive implementation, email should pass RegEx test, password should respesct complexity rules */
+    /* naive implementation, email should pass RegEx test, password should respect complexity rules */
     if (registerFormPass1.value !== registerFormPass2.value) {
       if (!document.querySelector("#error-passwd")) {
-        const pEl = document.createElement("p");
-        pEl.innerText = "Les mots de passe doivent être identique";
-        pEl.classList.add("error-form");
-        pEl.id = "error-passwd";
-        registerFormPass2.after(pEl);
+        const SpanEl = document.createElement("span");
+        SpanEl.innerText = "Les mots de passe doivent être identique";
+        SpanEl.classList.add("error-form");
+        SpanEl.id = "error-passwd";
+        registerFormPass2.after(SpanEl);
         registerFormPass2.setAttribute("aria-describedBy", "error-passwd");
+        registerFormPass2.focus();
       }
     } else if (
       registerFormEmail.value &&
@@ -80,9 +89,10 @@ if (registerForm) {
     ) {
       if (document.querySelector("#error-passwd")) {
         document.querySelector("#error-passwd").remove();
+        registerFormPass2.removeAttribute("aria-describedBy");
       }
 
-      ShowMessage({
+      showMessage({
         text: "vous avez crée un nouvel utilisateur, vous pouvez vous connecter avec celui-ci",
         type: "success",
       });
@@ -97,8 +107,18 @@ if (registerForm) {
   // naive implementation, we should create mutiple account
   function registerUser({ mail, passwd }) {
     const lowerizedMail = mail.toLowerCase();
-    localStorage.setItem("mail", lowerizedMail);
-    localStorage.setItem("passwd", passwd);
+
+    let users = [];
+    if (localStorage.getItem("Users")) {
+      users = JSON.parse(localStorage.getItem("Users"));
+    }
+
+    if (users.some((user) => user.mail === lowerizedMail)) {
+      showMessage({ text: "Cet email, n'est pas disponible", type: "error" });
+    } else {
+      users.push({ mail: lowerizedMail, passwd });
+      localStorage.setItem("Users", JSON.stringify(users));
+    }
   }
 }
 
