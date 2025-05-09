@@ -43,7 +43,7 @@ if (loginForm) {
       });
     } else {
       Auth();
-      window.location.href = "/synopsis.html";
+      window.location.href = "synopsis.html";
     }
   });
 
